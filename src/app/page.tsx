@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@/components/Button/Button';
 import ReactTable from '@/components/Table/ReactTable';
 import Tab from '@/components/Tab/Tab';
@@ -250,6 +250,27 @@ export default function Home() {
     }));
     setTableData(newPageData);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1024) {
+        setSideBarOpen(false);
+      } else if (window.innerWidth >= 1024) {
+        setSideBarOpen(true);
+      }
+    };
+
+    // Set initial state for mobile view
+    handleResize();
+
+    // Attach resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div>
