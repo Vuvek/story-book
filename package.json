@@ -1,0 +1,67 @@
+{
+  "name": "admin-html",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build-storybook": "storybook build",
+    "start": "npm run build && npm run build-storybook && concurrently \"next start\" \"npx serve ./storybook-static\"",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@storybook/addon-a11y": "^8.4.7",
+    "@storybook/addon-docs": "^8.4.7",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tanstack/react-table": "^8.20.5",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "next": "15.0.3",
+    "raw-loader": "^4.0.2",
+    "react": "^18.3.1",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-datepicker": "^7.5.0",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.5"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/nextjs": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/react-dom": "^18",
+    "concurrently": "^9.1.0",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-storybook": "^0.11.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "postcss": "^8",
+    "prettier": "^3.4.0",
+    "storybook": "^8.4.7",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
